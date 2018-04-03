@@ -14,6 +14,12 @@ namespace Backend
         {
             _context = context;
 
+            if(_context.Charts.Count() < 1)
+            {
+                Chart seedDataChart = new Chart ("Sia" , "07/29/1993", "Leo", "", "Rooster", 9, "A magnetic personality, confidence, and idealism are the essence of this vibration. It includes tolerance, compassion, and understanding. The person dreams of a world with understanding, harmony, and trust. There's a global consciousness, worldly and sophisticated, with an urge to accomplish humanitarian ideals. Philanthropy seems to be built in.", 4, "Events and circumstances tend to fill life with things practical, or making them so. Patience and care are used to deal with life situations. There's likely to be a strong sense of what is right. The person approaches things with a focus on security accompanied with conscientiousness and sincerity.");
+                _context.Charts.Add(seedDataChart);
+                _context.SaveChanges();
+            }
         }
 
         [HttpGet]

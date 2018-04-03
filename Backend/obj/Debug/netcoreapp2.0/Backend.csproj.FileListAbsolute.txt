@@ -1,10 +1,10 @@
+/Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/obj/Debug/netcoreapp2.0/Backend.csproj.CoreCompileInputs.cache
+/Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/obj/Debug/netcoreapp2.0/Backend.AssemblyInfoInputs.cache
+/Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/obj/Debug/netcoreapp2.0/Backend.AssemblyInfo.cs
 /Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/bin/Debug/netcoreapp2.0/Backend.deps.json
 /Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/bin/Debug/netcoreapp2.0/Backend.runtimeconfig.json
 /Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/bin/Debug/netcoreapp2.0/Backend.runtimeconfig.dev.json
 /Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/bin/Debug/netcoreapp2.0/Backend.dll
 /Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/bin/Debug/netcoreapp2.0/Backend.pdb
-/Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/obj/Debug/netcoreapp2.0/Backend.csproj.CoreCompileInputs.cache
-/Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/obj/Debug/netcoreapp2.0/Backend.AssemblyInfoInputs.cache
-/Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/obj/Debug/netcoreapp2.0/Backend.AssemblyInfo.cs
 /Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/obj/Debug/netcoreapp2.0/Backend.dll
 /Users/SiaXiong/Desktop/RedwoodCode/Project_3/Backend/obj/Debug/netcoreapp2.0/Backend.pdb
