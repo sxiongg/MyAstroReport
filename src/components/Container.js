@@ -4,6 +4,8 @@ import { Switch, Route } from 'react-router-dom'
 import Login from './login'
 import SignUp from './signup'
 import Generator from './Generator'
+import ViewCharts from './view-charts'
+import Navigation from './nav'
 
 class Container extends Component {
     constructor(props) {
@@ -14,10 +16,12 @@ class Container extends Component {
     render() {
         return (
             <div>
+                <Navigation />
                 <Switch>
                     <Route exact path='/' component={Login} />
                     <Route path='/sign-up' component={SignUp} />
                     <Route path='/calculate-chart' component={Generator} />
+                    <Route path='/your-saved-charts' component={ViewCharts} />
                 </Switch>
             </div>
         )

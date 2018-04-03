@@ -1,28 +1,90 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import axios from 'axios'
+import { setUserData } from '../redux/actions'
 
 class SignUp extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            firstName: "",
+            userName: "",
+            password: "",
+            verifyPassword: ""
+        }
     }
+
+    componentDidMount() {
+        axios.get("http://localhost:5000/users")
+            .then(response => {
+                this.props.sendUserDataToRedux(response.data);
+            })
+    }
+
+    PostNewUser() {
+        const newUser = {
+            Username: this.state.userName,
+            Password: this.state.password,
+            FirstName: this.state.firstName
+        }
+
+        if(this.state.password == this.state.verifyPassword)
+        {
+            axios({
+                method: 'post',
+                url: 'http://localhost:5000/users',
+                data: newUser,
+                headers: {
+                    //  'Authorization': 'bearer ${token}',
+                    'Content-Type': 'application/json'
+                }
+            }).then(
+                this.props.history.push("/")
+            )
+        }
+        else
+        {
+            alert("Passwords do not match");
+        }
+    }
+
     render() {
         return (
             <div>
                 <div className="form-group">
-                    <label htmlFor="firstName">First Name</label>
-                    <input type="text" id="firstName" />
-
-                    <label htmlFor="userName">Username</label>
-                    <input type="text" id="userName" />
-
-                    <label htmlFor="passWord">Password</label>
-                    <input type="text" id="passWord" />
-
-                    <button>Create Account</button>
+                    <div>
+                        <label htmlFor="firstName">First Name</label>
+                        <input onChange={event => {this.setState({firstName: event.target.value})}} value={this.state.firstName} type="text" id="firstName" />
+                    </div>
+                    <div>
+                        <label htmlFor="userName">Username</label>
+                        <input onChange={event => {this.setState({userName: event.target.value})}} value={this.state.userName} type="text" id="userName" />
+                    </div>
+                    <div>
+                        <label htmlFor="passWord">Password</label>
+                        <input onChange={event => {this.setState({password: event.target.value})}} value={this.state.password} type="password" id="passWord" />
+                    </div>
+                    <div>
+                        <label htmlFor="verifyPassWord">Verify Password</label>
+                        <input onChange={event => {this.setState({verifyPassword: event.target.value})}} value={this.state.verifyPassword} type="password" id="verifyPassWord" />
+                    </div>
+                    <button onClick={this.PostNewUser.bind(this)}>Create Account</button>
                 </div>
             </div>
         )
     }
 }
 
-export default SignUp;
+const mapStateToProps = state => {
+    return {
+        userData: state.userData
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+       sendUserDataToRedux: response => dispatch(setUserData(response))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

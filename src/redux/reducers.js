@@ -1,16 +1,19 @@
 const initialState = {
     loggedIn: false,
+    userData: [],
+    chartData: [],
+    charts: []
 }
 
 const rootReducer = (state = initialState, action) => {
-    // if (action.type == 'LOAD_API') {
-    //     state = {
-    //         ...state,
-    //         reviews: action.payload
-    //     }
-    //     console.log(state.reviews);
-    // }
-    
+    if (action.type == 'USER_DATA') {
+        state = {
+            ...state,
+            userData: action.payload
+        }
+        console.log("User data loaded.")
+    }
+
     return state;
 }
 

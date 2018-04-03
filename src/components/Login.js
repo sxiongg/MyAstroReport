@@ -7,19 +7,19 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Username: "",
-            Password: ""
+            userName: "",
+            password: ""
         }
     }
 
     Validation() {
-        if (this.state.Username == "" || this.state.Password == "") {
+        if (this.state.userName == "" || this.state.password == "") {
             alert("Please enter your login information.");
         }
         else {
-            axios.get("http://localhost:5000/users/" + this.state.Username)
+            axios.get("http://localhost:5000/users/" + this.state.userName)
             .then(response => {
-                if(response.data.password == this.state.Password) {
+                if(response.data.password == this.state.password) {
                     this.props.history.push("/calculate-chart");
                     console.log(response.data);
                 }
@@ -38,12 +38,12 @@ class Login extends Component {
             <div className="form-group">
                 <div>
                     <label htmlFor="usernameInput">Username</label>
-                    <input onChange={event => {this.setState({Username: event.target.value})}} value={this.state.Username} type="text" id="usernameInput" />
+                    <input onChange={event => {this.setState({userName: event.target.value})}} value={this.state.userName} type="text" id="usernameInput" />
                 </div>
 
                 <div>
                     <label htmlFor="passwordInput">Password</label>
-                    <input onChange={event => {this.setState({Password: event.target.value})}} value={this.state.Password} type="password" id="passwordInput" />
+                    <input onChange={event => {this.setState({password: event.target.value})}} value={this.state.password} type="password" id="passwordInput" />
                 </div>
 
                  <button onClick={this.Validation.bind(this)}>Login</button>
