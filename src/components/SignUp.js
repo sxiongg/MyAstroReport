@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import axios from 'axios'
-import { setUserData } from '../redux/actions'
 
 class SignUp extends Component {
     constructor(props) {
@@ -14,13 +12,6 @@ class SignUp extends Component {
         }
     }
 
-    componentDidMount() {
-        axios.get("http://localhost:5000/users")
-            .then(response => {
-                this.props.sendUserDataToRedux(response.data);
-            })
-    }
-
     PostNewUser() {
         const newUser = {
             Username: this.state.userName,
@@ -28,24 +19,31 @@ class SignUp extends Component {
             FirstName: this.state.firstName
         }
 
-        if(this.state.password == this.state.verifyPassword)
-        {
-            axios({
-                method: 'post',
-                url: 'http://localhost:5000/users',
-                data: newUser,
-                headers: {
-                    //  'Authorization': 'bearer ${token}',
-                    'Content-Type': 'application/json'
+        axios.get("http://localhost:5000/users/" + this.state.userName)
+            .then(response => {
+                if (response.status == 204) {
+                    if(this.state.password == this.state.verifyPassword) {
+                        axios({
+                            method: 'post',
+                            url: 'http://localhost:5000/users',
+                            data: newUser,
+                            headers: {
+                                //  'Authorization': 'bearer ${token}',
+                                'Content-Type': 'application/json'
+                            }
+                        }).then(
+                            this.props.history.push("/")
+                        )
+                    }
+                    else
+                    {
+                        alert("Passwords do not match");
+                    }
                 }
-            }).then(
-                this.props.history.push("/")
-            )
-        }
-        else
-        {
-            alert("Passwords do not match");
-        }
+                else if (response.status == 200) {
+                    alert("Username already exists.")
+                }
+            })
     }
 
     render() {
@@ -75,16 +73,4 @@ class SignUp extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        userData: state.userData
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-       sendUserDataToRedux: response => dispatch(setUserData(response))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default SignUp;

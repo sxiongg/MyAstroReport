@@ -24,22 +24,15 @@ namespace Backend
         [HttpGet]
         public List<User> GetUsers()
         {
-            return _context.Users.ToList();
+            return _context.Users.Include(u => u.SavedCharts ).ToList();
         }
 
         [HttpGet("{username}")]
         public User GetSingleUser(string username)
         {
-            var user = _context.Users.FirstOrDefault(c => c.Username == username);
+            var user = _context.Users.Include(u => u.SavedCharts ).FirstOrDefault(c => c.Username == username);
             return user;
         }
-
-        // [HttpGet("{username}")]
-        // public User CheckForUsername(string username)
-        // {
-        //     var user = _context.Users.FirstOrDefault(c => c.Username == username);
-        //     return user;
-        // }
 
         [HttpPost]
         public User PostNewUser([FromBody]User user)
@@ -47,6 +40,15 @@ namespace Backend
             _context.Users.Add(user);
             _context.SaveChanges();
 
+            return user;
+        }
+
+        [HttpPut("{username}")]
+        public User PutSpinner(string username, [FromBody]Chart newChart)
+        {
+            var user = _context.Users.Include(u => u.SavedCharts ).FirstOrDefault(c => c.Username == username);
+            user.SavedCharts.Add(newChart);
+            _context.SaveChanges();
             return user;
         }
 

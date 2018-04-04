@@ -11,6 +11,9 @@ namespace Backend
 
         public DbSet<Chart> Charts { get; set; }    // database set
         public DbSet<User> Users { get; set; }
+        public DbSet<Month> Months { get; set; }
+
+
     }
 
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Backend
 {
@@ -7,6 +8,7 @@ namespace Backend
         public string Username { get; set; }
         public string Password { get; set; }
         public string FirstName { get; set; }
+        public List<Chart> SavedCharts { get; set; }
         public int Id { get; set; }
         public User()
         {
@@ -17,6 +19,7 @@ namespace Backend
             this.FirstName = name;
             this.Username = username;
             this.Password = password;
+            this.SavedCharts = new List<Chart>();
         }
     }
 }

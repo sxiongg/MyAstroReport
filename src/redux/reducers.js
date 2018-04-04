@@ -1,19 +1,42 @@
 const initialState = {
     loggedIn: false,
-    userData: [],
-    chartData: [],
-    charts: []
+    user: "",
+    chineseZodiac: [],
+    numerology: [],
 }
 
 const rootReducer = (state = initialState, action) => {
-    if (action.type == 'USER_DATA') {
+    if (action.type == 'LOGGED_IN') {
         state = {
             ...state,
-            userData: action.payload
+            user: action.payload,
+            loggedIn: true
         }
-        console.log("User data loaded.")
+        console.log(state.user + " is logged in: " + state.loggedIn);
     }
-
+    if (action.type == 'LOGGED_OUT') {
+        state = {
+            loggedIn: action.payload,
+            user: "",
+            chineseZodiac: [],
+            numerology: []
+        }
+        console.log("User logged in: " + state.loggedIn);
+    }
+    if (action.type == 'CHINESE_ZODIAC') {
+        state = {
+            ...state,
+            chineseZodiac: action.payload,
+        }
+        console.log(state.chineseZodiac)
+    }
+    if (action.type == 'NUMEROLOGY') {
+        state = {
+            ...state,
+            numerology: action.payload,
+        }
+        console.log(state.numerology)
+    }
     return state;
 }
 

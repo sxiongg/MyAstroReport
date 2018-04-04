@@ -20,7 +20,7 @@ class Container extends Component {
                 <Switch>
                     <Route exact path='/' component={Login} />
                     <Route path='/sign-up' component={SignUp} />
-                    <Route path='/calculate-chart' component={Generator} />
+                    <Route path='/generate-new-chart' component={Generator} />
                     <Route path='/your-saved-charts' component={ViewCharts} />
                 </Switch>
             </div>
