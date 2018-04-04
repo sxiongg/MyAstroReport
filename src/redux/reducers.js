@@ -1,6 +1,7 @@
 const initialState = {
     loggedIn: false,
     user: "",
+    sign: "",
     chineseZodiac: [],
     numerology: [],
 }
@@ -36,6 +37,13 @@ const rootReducer = (state = initialState, action) => {
             numerology: action.payload,
         }
         console.log(state.numerology)
+    }
+    if (action.type == 'SUN_SIGN') {
+        state = {
+            ...state,
+            sign: action.payload
+        }
+        console.log(state.sign)
     }
     return state;
 }

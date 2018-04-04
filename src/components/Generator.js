@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { numerologyResponse } from '../redux/actions'
 import { chineseZodiacResponse } from '../redux/actions'
+import { sunSign } from '../redux/actions'
 
 class Generator extends Component {
     constructor(props) {
@@ -104,13 +105,19 @@ class Generator extends Component {
             .then(response => {
                 this.props.sendSecondApiToRedux(response.data)
             })
+
+        axios.get("http://localhost:5000/signs?monthNumber=" + this.state.month + "&dayNumber=" + this.state.day)
+        .then(response => {
+            this.props.sendSignToRedux(response.data)
+        })    
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         sendFirstApiToRedux: response => dispatch(chineseZodiacResponse(response)),
-        sendSecondApiToRedux: response => dispatch(numerologyResponse(response))
+        sendSecondApiToRedux: response => dispatch(numerologyResponse(response)),
+        sendSignToRedux: response => dispatch(sunSign(response))
     }
 }
 
