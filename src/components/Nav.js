@@ -18,11 +18,11 @@ class Navigation extends Component {
                     <li> {isLoggedIn ? (
                         <p className="greeting"> Hello, {user}! </p>
                     ) : (
-                            <Link to="/"> Home </Link>
+                            <Link to="/"> Login </Link>
                         )}
                     </li>
-                    <li> <Link to="/generate-new-chart"> Generate Chart </Link></li>
-                    <li> <Link to="/your-saved-charts"> Your Charts </Link></li>
+                    <li> <Link to="/generate-new-report"> Generate Report </Link></li>
+                    <li> <Link to="/your-saved-reports"> Your Reports </Link></li>
                     <li onClick={this.setToFalse.bind(this)}>
                         {isLoggedIn ? (
                             <Link to="/"> Log Out </Link>
@@ -43,7 +43,7 @@ class Navigation extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.loggedIn,
-        user: state.user
+        user: state.user.firstname
     }
 }
 

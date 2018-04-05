@@ -4,8 +4,10 @@ import { Switch, Route } from 'react-router-dom'
 import Login from './login'
 import SignUp from './signup'
 import Generator from './Generator'
-import ViewCharts from './view-charts'
 import Navigation from './nav'
+import Report from './report'
+import ViewReports from './view-reports';
+
 
 class Container extends Component {
     constructor(props) {
@@ -20,8 +22,10 @@ class Container extends Component {
                 <Switch>
                     <Route exact path='/' component={Login} />
                     <Route path='/sign-up' component={SignUp} />
-                    <Route path='/generate-new-chart' component={Generator} />
-                    <Route path='/your-saved-charts' component={ViewCharts} />
+                    <Route path='/generate-new-report' component={Generator} />
+                    <Route path='/saved-reports' component={ViewReports} />
+                    <Route path='/report' component={Report} />
+
                 </Switch>
             </div>
         )

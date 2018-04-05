@@ -26,8 +26,12 @@ class Login extends Component {
                     alert("Username does not exist.");
                 }
                 else if(response.data.password == this.state.password) {
-                    this.props.history.push("/calculate-chart");
-                    this.props.loggedIn(response.data.firstName);
+                    this.props.history.push("/generate-new-report");
+                    let names = {
+                        firstname: response.data.firstName,
+                        username: response.data.username
+                    }
+                    this.props.loggedIn(names);
                 }
                 else {
                     alert("Incorrect Password!");

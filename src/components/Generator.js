@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+
 import { numerologyResponse } from '../redux/actions'
 import { chineseZodiacResponse } from '../redux/actions'
 import { sunSign } from '../redux/actions'
@@ -24,7 +25,6 @@ class Generator extends Component {
                         <p> Full Name </p>
                     </div>
                     <div>
-                        {/* <label htmlFor="nameInput">Full Name</label> */}
                         <input onChange={e => this.setState({ name: e.target.value })} value={this.state.name} type="text" id-="nameInput" />
                     </div>
                     <div>
@@ -109,7 +109,9 @@ class Generator extends Component {
         axios.get("http://localhost:5000/signs?monthNumber=" + this.state.month + "&dayNumber=" + this.state.day)
         .then(response => {
             this.props.sendSignToRedux(response.data)
-        })    
+        }) 
+        
+        this.props.history.push("/report");
     }
 }
 

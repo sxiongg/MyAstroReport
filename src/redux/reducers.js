@@ -1,9 +1,10 @@
 const initialState = {
     loggedIn: false,
-    user: "",
+    user: [],
     sign: "",
     chineseZodiac: [],
     numerology: [],
+    userReports: []
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -13,12 +14,14 @@ const rootReducer = (state = initialState, action) => {
             user: action.payload,
             loggedIn: true
         }
-        console.log(state.user + " is logged in: " + state.loggedIn);
+        console.log(state.user.firstname + " is logged in: " + state.loggedIn);
+        console.log(state.user)
     }
     if (action.type == 'LOGGED_OUT') {
         state = {
             loggedIn: action.payload,
             user: "",
+            sign: "",
             chineseZodiac: [],
             numerology: []
         }
