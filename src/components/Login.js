@@ -38,17 +38,17 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="form-group">
+            <div id="login" className="form-group">
                 <div>
-                    <label htmlFor="usernameInput">Username</label>
-                    <input onChange={event => { this.setState({ userName: event.target.value }) }} value={this.state.userName} type="text" id="usernameInput" />
+                    <label htmlFor="usernameInput">USERNAME</label>
+                    <input onChange={event => { this.setState({ userName: event.target.value }) }} value={this.state.userName} type="text" id="usernameInput" className="form-control" />
                 </div>
                 <div>
-                    <label htmlFor="passwordInput">Password</label>
-                    <input onChange={event => { this.setState({ password: event.target.value }) }} value={this.state.password} type="password" id="passwordInput" />
+                    <label htmlFor="passwordInput">PASSWORD</label>
+                    <input onChange={event => { this.setState({ password: event.target.value }) }} value={this.state.password} type="password" id="passwordInput" className="form-control" />
                 </div>
-                <button onClick={this.Validation.bind(this)}>Login</button>
-                <button><Link to="/sign-up"> Sign Up </Link></button>
+                <button onClick={this.Validation.bind(this)} className="btn btn-primary btn-block">LOGIN</button>
+                <button className="btn sign-up-btn btn-block"><Link to="/sign-up"> SIGN UP </Link></button>
             </div>
         )
     }

@@ -20,14 +20,14 @@ class Navigation extends Component {
         // const user = this.props.user;
 
         return (
-            <div>
+            <div id="navigation">
                 <ul className="nav nav-pills nav-justified">
                     <li> {isLoggedIn ?
                         (
                             <p className="greeting"> Welcome, {this.props.user[0].firstName}! </p>
                         ) :
                         (
-                            <Link to="/"> Login </Link>
+                            <Link to="/"> LogIn </Link>
                         )}
                     </li>
                     <li> <Link to="/generate-new-report"> Generate Report </Link></li>

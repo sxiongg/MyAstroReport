@@ -13,8 +13,48 @@ class ViewReports extends Component {
         const isLoggedIn = this.props.isLoggedIn;
 
         return (
-            <div>
+            <div id="view-reports">
+
+
                 {
+                    isLoggedIn ? (
+                        this.props.user.savedReports.map((item, index) => (
+                            <div key={index} className="saved-report">
+                                <table id="view-reports-table" className="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>DOB </th>
+                                            <th>Sun Sign</th>
+                                            <th>Chinese Zodiac</th>
+                                            <th>Name Number</th>
+                                            <th>Description</th>
+                                            <th>Birthdate Number</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td> {item.user_Name} </td>
+                                            <td> {item.dob} </td>
+                                            <td> {item.zodiac_Sign} </td>
+                                            <td> {item.chinese_Sign}</td>
+                                            <td> {item.name_Number}</td>
+                                            <td> {item.name_Reading} </td>
+                                            <td> {item.doB_Number} </td>
+                                            <td> {item.doB_Reading} </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        ))
+                    ) : (
+                            <div className="login-message text-center"> You must be logged in to view your reports. </div>
+                        )
+                }
+
+
+                {/* {
                     isLoggedIn ? (
                     this.props.user.savedReports.map((item, index) => (
                         <div key={index}>
@@ -31,7 +71,7 @@ class ViewReports extends Component {
                 ) : (
                     <div> You must be logged in to view your reports. </div>
                 )
-                }
+                } */}
             </div>
         )
     }

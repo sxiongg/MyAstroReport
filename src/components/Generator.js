@@ -19,7 +19,11 @@ class Generator extends Component {
     }
 
     HttpCalls() {
-        axios.get("http://localhost:5000/chinese-zodiac?year=" + this.state.year + "&month=" + this.state.month + "&day=" + this.state.day)
+        if(this.state.name == "" || this.state.day == "" || this.state.month == "" || this.state.year == "") {
+            alert("Please enter the full name and date.")
+        }
+        else {
+            axios.get("http://localhost:5000/chinese-zodiac?year=" + this.state.year + "&month=" + this.state.month + "&day=" + this.state.day)
             .then(response => {
                 this.props.sendFirstApiToRedux(response.data)
             })
@@ -37,24 +41,26 @@ class Generator extends Component {
             })
 
         this.props.history.push("/report");
+        }
     }
     
     render() {
         return (
-            <div>
-                <div className="form-group">
+            <div id="generate-report">
+                <div className="form-group text-center">
                     <div>
-                        <p> Full Name </p>
+                        <p className="text-left"> Full Name: </p>
+                        <p>*Enter the full name as shown on birth certificate to ensure accuracy.</p>
                     </div>
                     <div>
-                        <input onChange={e => this.setState({ name: e.target.value })} value={this.state.name} type="text" id-="nameInput" />
+                        <input onChange={e => this.setState({ name: e.target.value })} value={this.state.name} type="text" id="nameInput" className="form-control" />
                     </div>
                     <div>
-                        <p> Date of Birth </p>
+                        <p className="text-left"> Date of Birth: </p>
                     </div>
-                    <div>
+                    <div className="form-inline">
                         <label htmlFor="monthInput">Month</label>
-                        <select onChange={e => this.setState({ month: e.target.value })} value={this.state.month} id="monthInput">
+                        <select onChange={e => this.setState({ month: e.target.value })} value={this.state.month} id="monthInput" className="form-control">
                             <option value="0"></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -71,7 +77,7 @@ class Generator extends Component {
                         </select>
 
                         <label htmlFor="dayInput">Day</label>
-                        <select onChange={e => this.setState({ day: e.target.value })} value={this.state.day} id="dayInput">
+                        <select onChange={e => this.setState({ day: e.target.value })} value={this.state.day} id="dayInput" className="form-control">
                             <option value="0"></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -107,10 +113,10 @@ class Generator extends Component {
                         </select>
 
                         <label htmlFor="yearInput">Year</label>
-                        <input onChange={e => this.setState({ year: e.target.value })} value={this.state.year} id="yearInput" type="text" placeholder="YYYY" />
+                        <input onChange={e => this.setState({ year: e.target.value })} value={this.state.year} id="yearInput" type="text" maxLength="4" placeholder="YYYY" className="form-control" />
                     </div>
                 </div>
-                <button onClick={this.HttpCalls.bind(this)}>Get New Chart</button>
+                <button onClick={this.HttpCalls.bind(this)} className="btn btn-primary btn-block">Get New Report</button>
             </div>
         )
     }

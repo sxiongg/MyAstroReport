@@ -18,7 +18,7 @@ class Container extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <Title />
                 <Navigation />
                 <Switch>

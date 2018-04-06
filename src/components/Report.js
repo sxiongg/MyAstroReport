@@ -42,18 +42,19 @@ class Report extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <button> <Link to="/generate-new-report"> New Report </Link></button>
-                    <button onClick={this.PutReport.bind(this)}> Save Report </button>
+            <div id="new-report">
+                <div id="report-buttons">
+                    <button className="btn new-report-btn"> <Link to="/generate-new-report"> New Report </Link></button>
+                    <button className="btn btn-primary pull-right" onClick={this.PutReport.bind(this)}> Save Report </button>
                 </div>
-
-                <p> {this.props.Name} </p>
-                <p> {this.props.SunSign} </p>
-                <p> {this.props.Chinese} </p>
-                <p> {this.props.NameReading} </p>
-                <p> {this.props.BirthReading} </p>
-
+                <div id="report-div">
+                    <p className="text-center name-tag"> {this.props.Name} </p>
+                    <p> Sun Sign: {this.props.SunSign} </p>
+                    <p> Chinese Zodiac: {this.props.Chinese} </p>
+                    <p> {this.props.NameReading} </p>
+                    <p> {this.props.BirthReading} </p>
+                </div>
+                
             </div>
         )
     }
@@ -71,7 +72,7 @@ const mapStateToProps = state => {
         month: state.numerology.month,
         day: state.numerology.day,
         year: state.numerology.year,
-        loggedIn: state.loggedIn
+        loggedIn: state.loggedIn,
     }
 }
 

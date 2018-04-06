@@ -46,25 +46,26 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
+            <div id="sign-up">
+            <h2>Registration</h2>
                 <div className="form-group">
                     <div>
                         <label htmlFor="firstName">First Name</label>
-                        <input onChange={event => { this.setState({ firstName: event.target.value }) }} value={this.state.firstName} type="text" id="firstName" />
+                        <input onChange={event => { this.setState({ firstName: event.target.value }) }} value={this.state.firstName} type="text" id="firstName" className="form-control"/>
                     </div>
                     <div>
                         <label htmlFor="userName">Username</label>
-                        <input onChange={event => { this.setState({ userName: event.target.value }) }} value={this.state.userName} type="text" id="userName" />
+                        <input onChange={event => { this.setState({ userName: event.target.value }) }} value={this.state.userName} type="text" id="userName" className="form-control"/>
                     </div>
                     <div>
                         <label htmlFor="passWord">Password</label>
-                        <input onChange={event => { this.setState({ password: event.target.value }) }} value={this.state.password} type="password" id="passWord" />
+                        <input onChange={event => { this.setState({ password: event.target.value }) }} value={this.state.password} type="password" id="passWord" className="form-control"/>
                     </div>
                     <div>
                         <label htmlFor="verifyPassWord">Verify Password</label>
-                        <input onChange={event => { this.setState({ verifyPassword: event.target.value }) }} value={this.state.verifyPassword} type="password" id="verifyPassWord" />
+                        <input onChange={event => { this.setState({ verifyPassword: event.target.value }) }} value={this.state.verifyPassword} type="password" id="verifyPassWord" className="form-control"/>
                     </div>
-                    <button onClick={this.PostNewUser.bind(this)}>Create Account</button>
+                    <button onClick={this.PostNewUser.bind(this)} className="btn btn-primary btn-block">Create Account</button>
                 </div>
             </div>
         )

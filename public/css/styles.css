@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div h1 {
+    font-family: Forum;
+    font-size: 50px;
+    text-align: center;
+}
+
+#navigation {
+    font-family: Yrsa;
+    font-size: 17px;
+    margin: 2rem 0 5rem 0;
+}
+
+.greeting {
+    margin-left: 30px;
+    font-size: 25px;
+    font-weight: bold
+}
+
+#login {
+    font-family: Rufina;
+    width: 40%;
+    margin: auto
+}
+
+#usernameInput {
+    height:50px;
+    font-size: 25px;
+    font-family: Nanum Myeongjo;
+    margin: 0 0 1rem 0
+}
+
+#passwordInput {
+    height:50px;
+    font-family: Nanum Myeongjo;
+    font-size: 20px;
+    margin: 0 0 1rem 0
+}
+
+.sign-up-btn {
+    background-color: darkgrey
+}
+
+#generate-report {
+    width: 50%;
+    margin: auto;
+    font-family: Rufina
+}
+
+#nameInput {
+    height: 50px;
+    font-size: 25px;
+    font-family: Nanum Myeongjo;
+    margin: 0 auto 2rem auto
+}
+
+.text-left {
+    font-size: 16px
+}
+
+#monthInput {
+    width: 10%;
+    font-size: 15px;
+    font-family: Nanum Myeongjo;
+    margin: 0 2rem 0 1rem
+}
+
+#dayInput {
+    width: 10%;
+    font-size: 15px;
+    font-family: Nanum Myeongjo;
+    margin: 0 2rem 0 1rem
+}
+
+#yearInput {
+    width: 20%;
+    font-size: 15px;
+    font-family: Nanum Myeongjo;
+    margin: 0 0 0 1rem;
+    text-align: center
+}
+
+#new-report {
+    width: 50%;
+    margin: auto;
+    font-family: Rufina;
+}
+
+#report-buttons button{
+    margin: 0 0 3rem 0;
+    font-size: 18px
+}
+
+.new-report-btn {
+    background-color: silver
+}
+
+#report-div {
+    font-size: 17px;
+    margin: auto;
+    border: 1px solid darkgrey;
+    border-radius: 3px;
+    padding: 15px
+}
+
+.name-tag {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#view-reports {
+    width: 65%;
+    margin: auto;
+    font-family: Forum
+}
+
+#view-reports-table th {
+    font-size: 16px
+}
+
+.login-message {
+    font-size: 18px
+}
+
+.saved-report {
+    border: 1px solid lightslategray;
+    border-radius: 3px;
+    margin: 10px
+}
+#sign-up {
+    width: 50%;
+    margin: auto;
+    font-family: Rufina
+}
+
+#firstName {
+    height:50px;
+    font-size: 25px;
+    font-family: Nanum Myeongjo;
+    margin: 0 0 1rem 0
+}
+
+#userName {
+    height:50px;
+    font-size: 25px;
+    font-family: Nanum Myeongjo;
+    margin: 0 0 1rem 0
+}
+
+#passWord {
+    height:50px;
+    font-size: 25px;
+    font-family: Nanum Myeongjo;
+    margin: 0 0 1rem 0
+}
+
+#verifyPassWord {
+    height:50px;
+    font-size: 25px;
+    font-family: Nanum Myeongjo;
+    margin: 0 0 1rem 0
+}
+
