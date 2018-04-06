@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 
+import Title from './title'
 import Login from './login'
 import SignUp from './signup'
 import Generator from './Generator'
@@ -18,6 +19,7 @@ class Container extends Component {
     render() {
         return (
             <div>
+                <Title />
                 <Navigation />
                 <Switch>
                     <Route exact path='/' component={Login} />

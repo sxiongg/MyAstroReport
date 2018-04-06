@@ -22,26 +22,24 @@ class SignUp extends Component {
         axios.get("http://localhost:5000/users/" + this.state.userName)
             .then(response => {
                 if (response.status == 204) {
-                    if(this.state.password == this.state.verifyPassword) {
+                    if (this.state.password == this.state.verifyPassword) {
                         axios({
                             method: 'post',
                             url: 'http://localhost:5000/users',
                             data: newUser,
                             headers: {
-                                //  'Authorization': 'bearer ${token}',
                                 'Content-Type': 'application/json'
                             }
                         }).then(
                             this.props.history.push("/")
                         )
                     }
-                    else
-                    {
-                        alert("Passwords do not match");
+                    else {
+                        alert("Passwords do not match.");
                     }
                 }
                 else if (response.status == 200) {
-                    alert("Username already exists.")
+                    alert("Username already exists. Please choose a new username.")
                 }
             })
     }
@@ -52,19 +50,19 @@ class SignUp extends Component {
                 <div className="form-group">
                     <div>
                         <label htmlFor="firstName">First Name</label>
-                        <input onChange={event => {this.setState({firstName: event.target.value})}} value={this.state.firstName} type="text" id="firstName" />
+                        <input onChange={event => { this.setState({ firstName: event.target.value }) }} value={this.state.firstName} type="text" id="firstName" />
                     </div>
                     <div>
                         <label htmlFor="userName">Username</label>
-                        <input onChange={event => {this.setState({userName: event.target.value})}} value={this.state.userName} type="text" id="userName" />
+                        <input onChange={event => { this.setState({ userName: event.target.value }) }} value={this.state.userName} type="text" id="userName" />
                     </div>
                     <div>
                         <label htmlFor="passWord">Password</label>
-                        <input onChange={event => {this.setState({password: event.target.value})}} value={this.state.password} type="password" id="passWord" />
+                        <input onChange={event => { this.setState({ password: event.target.value }) }} value={this.state.password} type="password" id="passWord" />
                     </div>
                     <div>
                         <label htmlFor="verifyPassWord">Verify Password</label>
-                        <input onChange={event => {this.setState({verifyPassword: event.target.value})}} value={this.state.verifyPassword} type="password" id="verifyPassWord" />
+                        <input onChange={event => { this.setState({ verifyPassword: event.target.value }) }} value={this.state.verifyPassword} type="password" id="verifyPassWord" />
                     </div>
                     <button onClick={this.PostNewUser.bind(this)}>Create Account</button>
                 </div>

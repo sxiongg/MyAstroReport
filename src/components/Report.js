@@ -3,34 +3,18 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+import { updateUserState } from '../redux/actions'
+
 class Report extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
-    }
-    render() { 
-        return ( 
-            <div>
-                <div>
-                <button> <Link to="/generate-new-report"> New Report </Link></button>
-                <button onClick={this.PutReport.bind(this)}> Save Report </button>
-                </div>
-                
-                <p> {this.props.Name} </p>
-                <p> {this.props.SunSign} </p>
-                <p> {this.props.Chinese} </p>
-                <p> {this.props.NameReading} </p>
-                <p> {this.props.BirthReading} </p>
-
-            </div>
-         )
+        this.state = {}
     }
 
     PutReport() {
-
         if (this.props.loggedIn == true) {
             let newReport = {
-                user_name: this.props.name,
+                user_name: this.props.Name,
                 dob: this.props.month + "/" + this.props.day + "/" + this.props.year,
                 zodiac_sign: this.props.SunSign,
                 chinese_sign: this.props.Chinese,
@@ -39,21 +23,39 @@ class Report extends Component {
                 dob_number: this.props.BirthReading.charAt(24),
                 dob_reading: this.props.BirthReading
             }
+
             axios({
                 method: 'put',
-                url: 'http://localhost:5000/users/' + this.props.username,
+                url: 'http://localhost:5000/users/' + this.props.user[0].username,
                 data: newReport,
-                config: { headers: {'Content-Type': 'application/json' }}
-              }).then(response => {
-                  console.log(response.data)
-              })
-
-              this.props.history.push("/saved-reports");
+                config: { headers: { 'Content-Type': 'application/json' } }
+            }).then(response => {
+                console.log("Report saved to databse.");
+                this.props.updateUserState(response.data)
+            })
+            alert("Report saved.")
         }
-        else if (this.props.loggedIn == false) {
+        else {
             alert("You must be logged in to save this report.")
         }
-        
+    }
+
+    render() {
+        return (
+            <div>
+                <div>
+                    <button> <Link to="/generate-new-report"> New Report </Link></button>
+                    <button onClick={this.PutReport.bind(this)}> Save Report </button>
+                </div>
+
+                <p> {this.props.Name} </p>
+                <p> {this.props.SunSign} </p>
+                <p> {this.props.Chinese} </p>
+                <p> {this.props.NameReading} </p>
+                <p> {this.props.BirthReading} </p>
+
+            </div>
+        )
     }
 }
 
@@ -65,12 +67,18 @@ const mapStateToProps = state => {
         NameReading: state.numerology.namereading,
         BirthReading: state.numerology.birthdatereading,
 
-        username: state.user.username,
+        user: state.user,
         month: state.numerology.month,
         day: state.numerology.day,
         year: state.numerology.year,
         loggedIn: state.loggedIn
     }
 }
- 
-export default connect(mapStateToProps)(Report);
+
+const mapDispatchToProps = dispatch => {
+    return {
+        updateUserState: response => dispatch(updateUserState(response))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Report);

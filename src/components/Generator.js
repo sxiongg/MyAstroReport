@@ -17,6 +17,28 @@ class Generator extends Component {
             year: ""
         }
     }
+
+    HttpCalls() {
+        axios.get("http://localhost:5000/chinese-zodiac?year=" + this.state.year + "&month=" + this.state.month + "&day=" + this.state.day)
+            .then(response => {
+                this.props.sendFirstApiToRedux(response.data)
+            })
+
+        var name = this.state.name;
+        name.replace(/ /g, "%");
+        axios.get("http://localhost:5000/numerology?name=" + name + "&year=" + this.state.year + "&month=" + this.state.month + "&day=" + this.state.day)
+            .then(response => {
+                this.props.sendSecondApiToRedux(response.data)
+            })
+
+        axios.get("http://localhost:5000/signs?monthNumber=" + this.state.month + "&dayNumber=" + this.state.day)
+            .then(response => {
+                this.props.sendSignToRedux(response.data)
+            })
+
+        this.props.history.push("/report");
+    }
+    
     render() {
         return (
             <div>
@@ -91,27 +113,6 @@ class Generator extends Component {
                 <button onClick={this.HttpCalls.bind(this)}>Get New Chart</button>
             </div>
         )
-    }
-
-    HttpCalls() {
-        axios.get("http://localhost:5000/chinese-zodiac?year=" + this.state.year + "&month=" + this.state.month + "&day=" + this.state.day)
-            .then(response => {
-                this.props.sendFirstApiToRedux(response.data)
-            })
-
-        var name = this.state.name;
-        name.replace(/ /g, "%");
-        axios.get("http://localhost:5000/numerology?name=" + name + "&year=" + this.state.year + "&month=" + this.state.month + "&day=" + this.state.day)
-            .then(response => {
-                this.props.sendSecondApiToRedux(response.data)
-            })
-
-        axios.get("http://localhost:5000/signs?monthNumber=" + this.state.month + "&dayNumber=" + this.state.day)
-        .then(response => {
-            this.props.sendSignToRedux(response.data)
-        }) 
-        
-        this.props.history.push("/report");
     }
 }
 
